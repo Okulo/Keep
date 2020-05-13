@@ -6,17 +6,50 @@
   <script type="text/javascript" src="cordova.js"></script>
   <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
   <script src="js/onsenui.min.js"></script>
+  <style type="text/css">
+
+.checked {
+  color:green;
+    &:before {
+      content: "\2713";
+      padding: 10px 10px;
+      font-size: 20px;
+    }
+    &:hover {
+      text-decoration: none;
+      &:after {
+        content: "(remove)";
+        color: tomato;
+        text-align: right;
+      }
+    }
+}
+-->
+</style>
 </head>
 <body>
   
   <ons-page>
-    <ons-toolbar>
-       <div class="left">
-      <ons-toolbar-button icon="md-face"></ons-toolbar-button>
-    </div>
-    <div class="center name"></div>
-  </ons-toolbar>
+
         <ons-card>
+        <h1>Заметки</h1>
+
+<div class="container">
+  
+  <form  action="#">
+  
+   <div style="text-align: center; margin-top: 15px;">
+    <p>
+      <ons-input id="item" modifier="underbar" placeholder="Новая заметка" float></ons-input>
+    </p>
+    <p style="margin-top: 30px;">
+      <ons-button id='login'>Sign in</ons-button>
+    </p>
+  </div>
+</form>  
+<ul id="list"></ul>
+
+</div>
        <h4> Проверьте доступность !</h4>
        <div class="dev"></div>
        <div class="status"></div>
@@ -47,6 +80,52 @@
 
 
 <script type="text/javascript">
+(function(){
+  
+  var list = document.querySelector('#list'),
+      form = document.querySelector('form'),
+      item = document.querySelector('#item');
+  
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    list.innerHTML += '<li>' + item.value + '</li>';
+    store();
+    item.value = "";
+  },false)
+  
+  list.addEventListener('click',function(e){
+    var t = e.target;
+    if(t.classList.contains('checked')){
+      t.parentNode.removeChild(t);
+    } else {
+      t.classList.add('checked');
+    }
+    store();
+  },false)
+  
+  
+  $("#login").click(function(e){
+      e.preventDefault();
+    list.innerHTML += '<li>' + item.value + '</li>';
+    store();
+    item.value = "";
+  });
+  
+  function store() {
+    window.localStorage.myitems = list.innerHTML;
+  }
+  
+  function getValues() {
+    var storedValues = window.localStorage.myitems;
+    if(!storedValues) {
+      list.innerHTML = '<li>Добавьте новую заметку</li>';
+    }
+    else {
+      list.innerHTML = storedValues;
+    }
+  }
+  getValues();
+})();
 
    document.addEventListener("deviceready", onDeviceReady, false);
 
