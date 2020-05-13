@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Заметки",
+  "short_name": "Заметки",
+  "version": "kz.callstat.app",
+  "description": "Keep",
+  "author": "Keep Inc.",
+  "icons": [],
+  "start_url": "index.html"
+}

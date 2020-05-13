@@ -1,0 +1,49 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "kz.callstat.app"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "kz.callstat.app"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "kz.callstat.app"
+    },
+    "cordova-plugin-dialogs": {
+      "PACKAGE_NAME": "kz.callstat.app"
+    },
+    "cordova-plugin-contacts": {
+      "PACKAGE_NAME": "kz.callstat.app"
+    },
+    "cordova.plugins.diagnostic": {
+      "ANDROID_SUPPORT_VERSION": "28.+",
+      "PACKAGE_NAME": "kz.callstat.app"
+    },
+    "cordova-plugin-geolocation": {
+      "PACKAGE_NAME": "kz.callstat.app"
+    },
+    "cordova-plugin-androidx": {
+      "PACKAGE_NAME": "kz.callstat.app"
+    },
+    "cordova-plugin-androidx-adapter": {
+      "PACKAGE_NAME": "kz.callstat.app"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "kz.callstat.app"
+    },
+    "cordova-phone-call-trap": {
+      "PACKAGE_NAME": "kz.callstat.app"
+    },
+    "cordova-plugin-calllog": {
+      "PACKAGE_NAME": "kz.callstat.app"
+    }
+  },
+  "dependent_plugins": {}
+}

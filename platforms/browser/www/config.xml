@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="kz.callstat.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Заметки</name>
+    <description>
+     Keep
+    </description>
+    <author email="keep@gmail.com" href="http://www.keep.com">Keep Inc.</author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-navigation href="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <preference name="Fullscreen" value="false" />
+    <preference name="phonegap-version" value="cli-9.0.0" />
+    <preference name="cordova.plugins.diagnostic.modules" value="LOCATION CONTACTS CALENDAR EXTERNAL_STORAGE" />
+</widget>

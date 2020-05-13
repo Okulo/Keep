@@ -1,0 +1,62 @@
+{
+  "_from": "cordova-phone-call-trap",
+  "_id": "cordova-phone-call-trap@0.1.3",
+  "_inBundle": false,
+  "_integrity": "sha512-3C0lIcx/vHGl5s9L6Zt/ABH4Totp4ElGNxIOUpd5Ub0c9jvylNWu7zWe4Celil4ACJNuTGZSrCbJCrxjtnfAdQ==",
+  "_location": "/cordova-phone-call-trap",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "cordova-phone-call-trap",
+    "name": "cordova-phone-call-trap",
+    "escapedName": "cordova-phone-call-trap",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/cordova-phone-call-trap/-/cordova-phone-call-trap-0.1.3.tgz",
+  "_shasum": "3005b6b197299b5b6753ae32c9ac6b8ebfb85e59",
+  "_spec": "cordova-phone-call-trap",
+  "_where": "D:\\Gap\\callstat",
+  "author": {
+    "name": "Renan Oliveira and Felipe Ferreira"
+  },
+  "bugs": {
+    "url": "https://github.com/pavelety/cordova-phone-call-trap/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-phone-call-trap",
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  },
+  "deprecated": false,
+  "description": "It is a Apache Cordova plugin to simplify handling phone call status and events in Android and iOS devices",
+  "homepage": "https://github.com/pavelety/cordova-phone-call-trap#readme",
+  "keywords": [
+    "phonegap",
+    "calendar",
+    "phone",
+    "call",
+    "phone-call",
+    "ringing",
+    "phone-state",
+    "call-state",
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "license": "MIT",
+  "name": "cordova-phone-call-trap",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pavelety/cordova-phone-call-trap.git"
+  },
+  "version": "0.1.3"
+}

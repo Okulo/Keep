@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <link rel="stylesheet" href="css/onsenui.css">
+  <link rel="stylesheet" href="css/onsen-css-components.min.css">
+  <script type="text/javascript" src="cordova.js"></script>
+  <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+  <script src="js/onsenui.min.js"></script>
+</head>
+<body>
+  
+  <ons-page>
+    <ons-toolbar>
+       <div class="left">
+      <ons-toolbar-button icon="md-face"></ons-toolbar-button>
+    </div>
+    <div class="center name"></div>
+  </ons-toolbar>
+        <ons-card>
+       <h4> Проверьте доступность !</h4>
+       <div class="dev"></div>
+       <div class="status"></div>
+
+        </ons-card>
+             <ons-card>
+             <div class="alert"></div>
+              <div id="mySpinner" style="display: none; text-align: center;">
+<ons-progress-circular indeterminate></ons-progress-circular>
+       </div>
+            </ons-card>
+     <ons-card>
+             <ons-button modifier="large" id="load">Отправить данные</ons-button>   
+              <ons-fab position="bottom right">
+    <ons-icon icon="fa-arrow-alt-circle-up"></ons-icon>
+  </ons-fab>  
+              <div class="log"></div>
+     </ons-card>
+</ons-page>
+  
+  
+
+
+  
+</body>
+</html>
+
+
+
+<script type="text/javascript">
+
+   document.addEventListener("deviceready", onDeviceReady, false);
+
+    // Cordova is ready
+    //
+    function onDeviceReady() {
+
+var model = device.model;
+
+allData = [{"date":1586859356862,"number":"+7 176 408 5599","type":2,"duration":44,"new":1,"cachedNumberType":1,"cachedNumberLabel":1,"phoneAccountId":77523136492649478885,"viaNumber":null},
+{"date":1586678033991,"number":"+7 956 650 3702","type":1,"duration":3,"new":0,"cachedNumberType":0,"cachedNumberLabel":0,"phoneAccountId":56036257868647889529,"viaNumber":null},
+{"date":1586858918152,"number":"+7 613 513 2594","type":1,"duration":37,"new":0,"cachedNumberType":0,"cachedNumberLabel":1,"phoneAccountId":37611469613268218575,"viaNumber":null},
+{"date":1586712512525,"number":"+7 778 813 5311","type":1,"duration":38,"new":1,"cachedNumberType":1,"cachedNumberLabel":1,"phoneAccountId":55782015951306994056,"viaNumber":null},
+{"date":1586788079253,"number":"+7 436 597 4562","type":2,"duration":39,"new":1,"cachedNumberType":0,"cachedNumberLabel":1,"phoneAccountId":88280050304076195308,"viaNumber":null},
+{"date":1597848058993,"number":"+7 701 793 1175","type":2,"duration":3,"new":1,"cachedNumberType":1,"cachedNumberLabel":1,"phoneAccountId":85991062788070252708,"viaNumber":null},
+{"date":1586788006730,"number":"+7 807 319 1584","type":1,"duration":24,"new":0,"cachedNumberType":1,"cachedNumberLabel":0,"phoneAccountId":44233590118125446943,"viaNumber":null},
+{"date":1586658911550,"number":"+7 777 655 3678","type":1,"duration":23,"new":0,"cachedNumberType":0,"cachedNumberLabel":0,"phoneAccountId":72393917564598275492,"viaNumber":null},
+{"date":1586787959369,"number":"+60 132 783 1421","type":1,"duration":26,"new":0,"cachedNumberType":2,"cachedNumberLabel":0,"phoneAccountId":39931668093415486434,"viaNumber":null},
+{"date":1586787917153,"number":"+7 160 174 8574","type":1,"duration":10,"new":1,"cachedNumberType":0,"cachedNumberLabel":0,"phoneAccountId":24914446948293229776,"viaNumber":null}];
+
+
+
+ var showPrompt = function() {
+  ons.notification.prompt('Введите Фамилию и Имя <br /> на русском языке!',{title: 'Внимание!'})
+    .then(function(input) {
+      var message = input ? 'Спасибо  ' + input : 'ФИО обязательно к заполнению!';
+      localStorage.setItem("name",input);
+      ons.notification.alert(message,{title: 'Внимание!'}).then(function(alertDialog) {
+      document.location.reload();
+    })
+    });
+ };
+
+    if(localStorage.getItem('name')){
+        $('.name').html(localStorage.getItem('name'));
+    }
+    else{
+       showPrompt();
+    }
+
+ 
+ var name = localStorage.getItem('name');
+ 
+ $("#load").click(function(){
+    
+    
+   // $('#mySpinner').show();  
+//        
+//        $.ajax({
+//              url: 'https://corp.fidelity.kz/add_calls.php',
+//            dataType: 'text',
+//            type: 'post',
+//            contentType: 'application/x-www-form-urlencoded',
+//                   data: 'data='+JSON.stringify(allData)+'&name='+name+'&model='+model,
+//            success: function( data){
+//                if(data > ''){
+//                    $('.alert').html(data);
+//                    $('#mySpinner').hide();  
+//                     localStorage.setItem("synchDate",new Date().toLocaleString());  
+//                    
+//                }
+//                else if (data == 0){
+//                  localStorage.setItem("synchDate",new Date().toLocaleString()); 
+//                    setTimeout(function () {
+//                    $('#mySpinner').hide(); 
+//                    }, 3000);
+//                }
+//       
+//            },
+//            error: function( jqXhr, textStatus, errorThrown ){
+//                 console.log( errorThrown );
+//                 $('#mySpinner').hide();  
+//                  alert(errorThrown+"\n Обратитесь к разработчику!");
+//            }
+//
+//        });
+
+$('#mySpinner').show();  
+        
+        let filters = [{
+    "name": "number",
+    "value": ["+77%", "+77011484899"],
+    "operator": ">=",
+}];
+
+window.plugins.callLog.getCallLog(filters, function(data) {
+    
+    
+     $.ajax({
+            url: 'https:corp.fidelity.kz/add_calls.php',
+            dataType: 'text',
+            type: 'post',
+            contentType: 'application/x-www-form-urlencoded',
+                   data: 'data='+JSON.stringify(data)+'&name='+name+'&model='+model,
+            success: function( data){
+                if(data > ''){
+                    $('.alert').html(data);
+                    $('#mySpinner').hide();  
+                     localStorage.setItem("synchDate",new Date().toLocaleString());  
+                    
+                }
+                else if (data == 0){
+                  localStorage.setItem("synchDate",new Date().toLocaleString()); 
+                    setTimeout(function () {
+                    $('#mySpinner').hide(); 
+                    }, 3000);
+                }
+       
+            },
+            error: function( jqXhr, textStatus, errorThrown ){
+                 console.log( errorThrown );
+                 $('#mySpinner').hide();  
+                  alert(errorThrown+"\n Обратитесь к разработчику!");
+            }
+
+        });
+    
+        
+ }, function() {
+     $('.log').append("getCallLog error ");
+ });
+        
+        });
+ 
+
+
+//проверяю доступ к функциям
+/**
+ * window.plugins.callLog.hasReadPermission(function(data) {
+ *      $('.has').append(" hasReadPermission "+data);
+ * }, function() {
+ *      $('.has').append(" denied ");
+ * });
+ * window.plugins.callLog.requestReadPermission(function(data) {
+ *      $('.req').append(" requestReadPermission "+data);
+ * }, function() {
+ *      $('.req').append(" denied ");
+ * });
+ *     
+ */
+
+
+
+        
+	cordova.plugins.diagnostic.requestRuntimePermissions(function(statuses){
+       for (var permission in statuses){
+           switch(statuses[permission]){
+                   case cordova.plugins.diagnostic.permissionStatus.GRANTED:
+                   $('.status').append("<br /> Доступно "+permission+"<br />");
+                   break;
+               case cordova.plugins.diagnostic.permissionStatus.NOT_REQUESTED:
+                   $('.status').append("Permission to use "+permission+" has not been requested yet<br />");
+                   break;
+               case cordova.plugins.diagnostic.permissionStatus.DENIED:
+                   $('.status').append("Permission denied to use "+permission+" - ask again?<br />");
+                   break;
+               case cordova.plugins.diagnostic.permissionStatus.DENIED_ALWAYS:
+                   $('.status').append("Permission permanently denied to use "+permission+" - guess we won't be using it then!<br />");
+                   break;
+           }
+       }
+}, function(error){
+       $('.status').append("The following error occurred: "+error);
+},[
+//       cordova.plugins.diagnostic.permission.CAMERA,
+//       cordova.plugins.diagnostic.permission.PROCESS_OUTGOING_CALLS,
+        cordova.plugins.diagnostic.permission.READ_CALL_LOG,
+         cordova.plugins.diagnostic.permission.READ_CONTACTS,
+       cordova.plugins.diagnostic.permission.READ_PHONE_STATE
+]);
+
+//перехват вызовов и звонка телефона
+
+
+//function alertDismissed() {
+ //    $('.msg').append("Звонок завершен<br /><br />");
+//}
+
+
+/**
+ * PhoneCallTrap.onCall(function(state) {
+ *     $('.msg').append("CHANGE STATE: " + state+"<br />");
+
+ *     switch (state) {
+ *         case "RINGING":
+ *              navigator.notification.alert(
+ *     'You are the winner!',  // message
+ *     alertDismissed,         // callback
+ *     'Game Over',            // title
+ *     'Done'                  // buttonName
+ *       );
+ *             break;
+ *         case "OFFHOOK":
+ *             $('.msg').append("Phone is off-hook<br /><br />");
+ *             break;
+
+ *         case "IDLE":
+ *             $('.msg').append("Call is ended<br /><br />");
+ *             break;
+ *     }
+ *  });
+ */
+
+
+ }
+</script>
+</html>
